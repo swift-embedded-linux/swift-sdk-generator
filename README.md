@@ -202,6 +202,14 @@ swift run swift-sdk-generator make-linux-sdk --from-container-image swift:6.1-no
 swift run swift-sdk-generator make-linux-sdk --with-docker --distribution-name rhel --from-container-image swift:6.1-rhel-ubi9
 ```
 
+NOTE: If you need to generate a Swift SDK from a Docker container with a non-matching architecture to the host, you will need to setup qemu emulation for Docker using this command:
+
+```bash
+docker run --privileged --rm tonistiigi/binfmt --install arm64
+```
+
+If this was not previously setup, generating the Swift SDK will fail.
+
 ### Including extra Linux libraries
 
 If your project depends on Linux libraries which are not part of a
